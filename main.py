@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import Runnable
 from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 
 load_dotenv()
 
@@ -25,6 +26,7 @@ In 2002, Musk founded the space technology company SpaceX, becoming its CEO and 
         template=summary_template,
     )
 
+    # llm = ChatOllama(temperature=0, model="gemma3:latest")
     llm = ChatOpenAI(temperature=0, model="gpt-5")
 
     chain: Runnable = summary_prompt_template | llm
